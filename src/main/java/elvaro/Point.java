@@ -15,17 +15,17 @@ public class Point {
     /**
      * Calculate the distance from this point to the supplied point
      *
-     * @param distantX The X coordinate of the distant point
-     * @param distantY The Y coordinate of the distant point
+     * @param destPoint The Point to measure the distance to
      * @return The distance between the two points
      */
-    public double calculateDistanceToPoint(double distantX, double distantY) {
+    public double calculateDistanceToPoint(Point destPoint) {
         double distance;
 
-        double xFactor = Math.pow(distantX - this.x, 2);
-        double yFactor = Math.pow(distantY - this.y, 2);
+        double xFactor = Math.pow(destPoint.x - this.x, 2);
+        double yFactor = Math.pow(destPoint.y - this.y, 2);
 
         distance = Math.sqrt(xFactor + yFactor);
+
         return distance;
     }
 }

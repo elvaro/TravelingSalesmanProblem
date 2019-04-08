@@ -4,7 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
 <GridPane fx:controller="elvaro.FXMLController" xmlns:fx="http://javafx.com/fxml"
-          prefHeight="200" prefWidth="320"
+          prefHeight="1200" prefWidth="1200"
           alignment="center" hgap="10" vgap="10">
 
     <Label text="java-Buddy" fx:id="label"

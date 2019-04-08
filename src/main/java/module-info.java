@@ -1,4 +1,4 @@
-module hellofx {
+module TSP {
     requires javafx.controls;
     requires javafx.fxml;
     

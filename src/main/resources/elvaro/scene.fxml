@@ -1,17 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
-<GridPane fx:controller="elvaro.FXMLController" xmlns:fx="http://javafx.com/fxml"
-          prefHeight="200" prefWidth="320"
-          alignment="center" hgap="10" vgap="10">
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 
-    <Label text="java-Buddy" fx:id="label"
-           GridPane.columnIndex="0" GridPane.rowIndex="0"
-           GridPane.columnSpan="2"/>
-
-    <Button id="button" text="Click Me!"
-            onAction="#buttonClick" fx:id="button"
-            GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-</GridPane>
+<BorderPane fx:controller="elvaro.FXMLController" xmlns:fx="http://javafx.com/fxml"
+            prefHeight="200" prefWidth="320">
+    <top>
+        <MenuBar fx:id="menuBar">
+            <menus>
+                <Menu text="File">
+                    <items>
+                        <MenuItem text="Open" onAction="#openDataFileDialog"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Exit" onAction="#exitProgram"/>
+                    </items>
+                </Menu>
+                <Menu text="Help">
+                    <items>
+                        <MenuItem text="About" onAction="#displayAboutDialog"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <left>
+    </left>
+    <center>
+    </center>
+    <right>
+    </right>
+    <bottom>
+    </bottom>
+</BorderPane>

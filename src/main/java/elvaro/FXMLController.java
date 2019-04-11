@@ -1,17 +1,25 @@
 package elvaro;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+
 
 public class FXMLController {
 
     public void initialize() {
     }
 
+    @FXML
+    private void exitProgram() {
+        System.exit(0);
+    }
 
     @FXML
-    private void buttonClick() {
-        System.out.println("test");
+    private void displayAboutDialog() {
+
+    }
+
+    @FXML
+    private void openDataFileDialog() {
+
     }
 }

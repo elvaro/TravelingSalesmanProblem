@@ -1,21 +1,11 @@
 package elvaro;
 
 import javafx.application.Application;
-
-import static javafx.application.Application.launch;
-
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.MenuBar;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
 import java.io.File;
-import java.nio.file.Paths;
-
 
 public class MainApp extends Application {
 
@@ -38,5 +28,4 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
 }

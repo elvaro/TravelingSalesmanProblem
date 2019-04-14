@@ -1,10 +1,12 @@
-package elvaro;
+package elvaro.algorithms;
+
+import elvaro.Point;
 
 /**
  * This class will implement the Nearest Neighbor Algorithm. Meaning it will always choose the closest unvisited point until all points
  * have been visited. This algorithm gives a fast approximate solution but almost never the optimal solution.
  */
-public class NearestNeighbor {
+public class NearestNeighbor implements TSPAlgorithms{
     private Point[] points;
 
     /**

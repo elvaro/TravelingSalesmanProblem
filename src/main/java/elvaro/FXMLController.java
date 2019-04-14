@@ -2,6 +2,9 @@ package elvaro;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 
 import java.io.*;
@@ -9,6 +12,15 @@ import java.util.ArrayList;
 
 
 public class FXMLController {
+
+    @FXML
+    private Rectangle parentRectangle;
+
+    @FXML
+    private BorderPane borderPane;
+
+    @FXML
+    private StackPane centerPane;
 
     public void initialize() {
     }
@@ -29,6 +41,10 @@ public class FXMLController {
         alert.showAndWait();
     }
 
+    /**
+     * This will open a file chooser so that the user can specify a data file for the application. The data read
+     * is converted into Point objects.
+     */
     @FXML
     private void openDataFileDialog() {
         FileChooser fileChooser = new FileChooser();
@@ -65,5 +81,15 @@ public class FXMLController {
             errorReadingFileAlert.setContentText("The following error occurred: " + ex);
             errorReadingFileAlert.showAndWait();
         }
+        DataHandler dataHandler = DataHandler.getDataHandler();
+        dataHandler.addPoints(points);
+
+        drawPoints();
+    }
+
+    private void drawPoints() {
+        Rectangle rec1 = new Rectangle(10, 10 , 10 , 10);
+        Rectangle rec2 = new Rectangle(100, 100 , 10 , 10);
+        centerPane.getChildren().addAll(rec1, rec2);
     }
 }

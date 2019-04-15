@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SeparatorMenuItem?>
-
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.control.Label?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 <BorderPane fx:controller="elvaro.FXMLController" xmlns:fx="http://javafx.com/fxml"
             prefHeight="500" prefWidth="500" fx:id="borderPane">
     <top>
@@ -31,16 +27,18 @@
     <left>
     </left>
     <center>
-        <StackPane fx:id="centerPane" minHeight="500.0" prefHeight="500.0" prefWidth="500.0">
+        <Pane fx:id="centerPane" minHeight="500.0" prefHeight="500.0" prefWidth="500.0">
+            <padding>
+                <Insets top="25" right="25" bottom="25" left="25"/>
+            </padding>
             <children>
-                <Rectangle fx:id="parentRectangle" x="10" y="10" width="500" height="500" fill="#FFFFFF"/>
-                <Label fx:id="addDataMessage" text="No data has been loaded." />
+                <Label fx:id="addDataMessage" text="No data has been loaded."/>
             </children>
-        </StackPane>
-
+        </Pane>
     </center>
     <right>
     </right>
     <bottom>
+
     </bottom>
 </BorderPane>

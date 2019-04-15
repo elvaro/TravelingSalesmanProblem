@@ -2,8 +2,11 @@ package elvaro;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 
@@ -20,7 +23,12 @@ public class FXMLController {
     private BorderPane borderPane;
 
     @FXML
-    private StackPane centerPane;
+    private Pane centerPane;
+
+    @FXML
+    private Label addDataMessage;
+    private ArrayList<Point> points;
+
 
     public void initialize() {
     }
@@ -64,7 +72,7 @@ public class FXMLController {
         }
 
         String st;
-        ArrayList<Point> points = new ArrayList<>();
+        points = new ArrayList<>();
         try {
             while ((st = br.readLine()) != null) {
                 String[] splitString = st.split(" ");
@@ -87,9 +95,16 @@ public class FXMLController {
         drawPoints();
     }
 
+    /**
+     * Draws the points on the pane. Adds tooltip to each of them
+     */
     private void drawPoints() {
-        Rectangle rec1 = new Rectangle(10, 10 , 10 , 10);
-        Rectangle rec2 = new Rectangle(100, 100 , 10 , 10);
-        centerPane.getChildren().addAll(rec1, rec2);
+        addDataMessage.setVisible(false);
+        for (Point point : points) {
+            Circle circle = new Circle(point.x, point.y, 5);
+            Tooltip tooltip = new Tooltip("X: " + point.x + ", Y: " + point.y);
+            Tooltip.install(circle, tooltip);
+            centerPane.getChildren().addAll(circle);
+        }
     }
 }

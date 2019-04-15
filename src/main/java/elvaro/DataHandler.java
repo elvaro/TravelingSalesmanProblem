@@ -14,6 +14,7 @@ public class DataHandler {
 
     /**
      * Returns the single instance of the DataHandler
+     *
      * @return DataHandler object
      */
     public static DataHandler getDataHandler() {

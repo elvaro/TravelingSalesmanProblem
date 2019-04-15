@@ -14,3 +14,4 @@ Things that need to be done in no particular order:
 -       Add some basic test cases for that algorithm
 -   Create some logo for the top header of the application
 -       Or find some logo on the internet
+-   Add some error handling for a faulty tsv file

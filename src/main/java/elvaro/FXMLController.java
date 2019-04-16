@@ -7,10 +7,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 
 import java.io.*;
@@ -18,13 +16,6 @@ import java.util.ArrayList;
 
 
 public class FXMLController {
-
-    @FXML
-    private Rectangle parentRectangle;
-
-    @FXML
-    private BorderPane borderPane;
-
     @FXML
     private Pane centerPane;
 
@@ -35,6 +26,10 @@ public class FXMLController {
     private ComboBox<TSPAlgorithms> algorithm;
 
     private ArrayList<Point> points;
+
+    private double totalDistance = 0;
+
+    private ArrayList<Point> path = new ArrayList<>();
 
 
     public void initialize() {
@@ -119,9 +114,15 @@ public class FXMLController {
 
     @FXML
     private void calculate() {
-        if(points != null && points.size() > 0) {
+        if (algorithm.getSelectionModel().getSelectedItem() == null) {
+            Alert noDataLoadedAlert = new Alert((Alert.AlertType.WARNING));
+            noDataLoadedAlert.setTitle("No algorithm selected!");
+            noDataLoadedAlert.setContentText("No algorithm selected. Please select an algorithm to continue.");
+            noDataLoadedAlert.showAndWait();
+        } else if (points != null && points.size() > 0) {
             DataHandler dataHandler = DataHandler.getDataHandler();
-            dataHandler.submitDataAndProcess(points, algorithm.getSelectionModel().getSelectedItem());
+            totalDistance = dataHandler.submitDataAndProcess(points, algorithm.getSelectionModel().getSelectedItem());
+
         } else {
             Alert noDataLoadedAlert = new Alert((Alert.AlertType.WARNING));
             noDataLoadedAlert.setTitle("No data loaded!");

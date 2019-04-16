@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class DataHandler {
     private static final DataHandler dHandler = new DataHandler();
-    private ArrayList<Point> points;
 
     /**
      * Private constructor
@@ -23,8 +22,7 @@ public class DataHandler {
         return dHandler;
     }
 
-    public void submitDataAndProcess(ArrayList<Point> points, TSPAlgorithms algorithm) {
-        this.points = points;
-        algorithm.storeDataPoints(points);
+    public double submitDataAndProcess(ArrayList<Point> points, TSPAlgorithms algorithm) {
+        return algorithm.calculate(points);
     }
 }

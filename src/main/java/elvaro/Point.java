@@ -6,6 +6,7 @@ package elvaro;
 public class Point {
     public final double x;
     public final double y;
+    public boolean visited = false;
 
     public Point(double x, double y) {
         this.x = x;

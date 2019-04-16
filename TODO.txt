@@ -2,12 +2,8 @@ Things that need to be done in no particular order:
 
 -   Finish the layout
 -       Have some sort of grid in the center that can display the points
--           If no data is loaded then maybe it should display that text in the center along with a button to load the data
 -       Select the starting location
 -           Maybe the user should be able to click on a point and set that as the starting point or select the point from a dropdown menu
--       In the bottom row, have the following
--           A dropdown menu that contains the all the implemented TSP algorithms, allowing the user to select which one to use
--           A button that starts the TSP process
 -   In the help menu, maybe bring up a dialog that links to a wiki page for each algorithm implemented.
 -       This could either be an internal webview in java or open up the default browser on the computer
 -   Implement the NearestNeighAlgorithm
@@ -15,3 +11,4 @@ Things that need to be done in no particular order:
 -   Create some logo for the top header of the application
 -       Or find some logo on the internet
 -   Add some error handling for a faulty tsv file
+-   Add distance from last point to the starting point

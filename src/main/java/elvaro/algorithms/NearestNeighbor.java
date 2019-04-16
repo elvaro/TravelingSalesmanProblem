@@ -9,22 +9,56 @@ import java.util.ArrayList;
  * have been visited. This algorithm gives a fast approximate solution but almost never the optimal solution.
  */
 public class NearestNeighbor implements TSPAlgorithms {
-    private Point[] points;
+    private ArrayList<Point> points;
+    private ArrayList<Point> path = new ArrayList<>();
 
     /**
-     * Create a new instance of this algorithm and supply the points data
+     * Create a new instance of this algorithm
      */
     public NearestNeighbor() {
     }
 
 
     @Override
-    public void storeDataPoints(ArrayList<Point> points) {
+    public double calculate(ArrayList<Point> points) {
+        this.points = points;
 
+        Point startPoint = points.get(0);
+        startPoint.visited = true;
+
+        ArrayList<Point> remainingPoints = points;
+        remainingPoints.remove(0);
+        double totalDistance = calculateDistanceToClosestPosition(startPoint, remainingPoints);
+        path.add(startPoint);
+        return totalDistance;
+    }
+
+    private double calculateDistanceToClosestPosition(Point currentPoint, ArrayList<Point> remainingPoints) {
+        double closestDistance = -1;
+        Point closestPoint = null;
+        if (remainingPoints.size() > 0) {
+            for (Point nextPoint : remainingPoints) {
+                double distanceToNextPoint = currentPoint.calculateDistanceToPoint(nextPoint);
+                if (distanceToNextPoint < closestDistance || closestDistance == -1) {
+                    closestPoint = nextPoint;
+                    closestDistance = distanceToNextPoint;
+                }
+            }
+            remainingPoints.remove(closestPoint);
+            path.add(closestPoint);
+        } else {
+            return 0;
+        }
+        return closestDistance + calculateDistanceToClosestPosition(closestPoint, remainingPoints);
     }
 
     @Override
     public String toString() {
         return "Nearest Neighbor";
+    }
+
+    @Override
+    public ArrayList<Point> getPath() {
+        return path;
     }
 }

@@ -1,5 +1,7 @@
 package elvaro;
 
+import elvaro.algorithms.TSPAlgorithms;
+
 import java.util.ArrayList;
 
 public class DataHandler {
@@ -21,7 +23,8 @@ public class DataHandler {
         return dHandler;
     }
 
-    public void addPoints(ArrayList<Point> points) {
+    public void submitDataAndProcess(ArrayList<Point> points, TSPAlgorithms algorithm) {
         this.points = points;
+        algorithm.storeDataPoints(points);
     }
 }

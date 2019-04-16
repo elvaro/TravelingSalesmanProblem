@@ -10,4 +10,6 @@ public interface TSPAlgorithms {
      * @param points An ArrayList of Points
      */
     void storeDataPoints(ArrayList<Point> points);
+
+    String toString();
 }

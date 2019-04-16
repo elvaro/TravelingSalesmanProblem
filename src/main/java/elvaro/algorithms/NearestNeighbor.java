@@ -22,4 +22,9 @@ public class NearestNeighbor implements TSPAlgorithms {
     public void storeDataPoints(ArrayList<Point> points) {
 
     }
+
+    @Override
+    public String toString() {
+        return "Nearest Neighbor";
+    }
 }

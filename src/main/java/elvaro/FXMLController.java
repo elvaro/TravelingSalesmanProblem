@@ -1,7 +1,10 @@
 package elvaro;
 
+import elvaro.algorithms.NearestNeighbor;
+import elvaro.algorithms.TSPAlgorithms;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.BorderPane;
@@ -27,10 +30,17 @@ public class FXMLController {
 
     @FXML
     private Label addDataMessage;
+
+    @FXML
+    private ComboBox<TSPAlgorithms> algorithm;
+
     private ArrayList<Point> points;
 
 
     public void initialize() {
+        //initialize all the algorithms and populate the dropdownmenu with them
+        NearestNeighbor nn = new NearestNeighbor();
+        algorithm.getItems().addAll(nn);
     }
 
     @FXML
@@ -89,8 +99,7 @@ public class FXMLController {
             errorReadingFileAlert.setContentText("The following error occurred: " + ex);
             errorReadingFileAlert.showAndWait();
         }
-        DataHandler dataHandler = DataHandler.getDataHandler();
-        dataHandler.addPoints(points);
+
 
         drawPoints();
     }
@@ -105,6 +114,19 @@ public class FXMLController {
             Tooltip tooltip = new Tooltip("X: " + point.x + ", Y: " + point.y);
             Tooltip.install(circle, tooltip);
             centerPane.getChildren().addAll(circle);
+        }
+    }
+
+    @FXML
+    private void calculate() {
+        if(points != null && points.size() > 0) {
+            DataHandler dataHandler = DataHandler.getDataHandler();
+            dataHandler.submitDataAndProcess(points, algorithm.getSelectionModel().getSelectedItem());
+        } else {
+            Alert noDataLoadedAlert = new Alert((Alert.AlertType.WARNING));
+            noDataLoadedAlert.setTitle("No data loaded!");
+            noDataLoadedAlert.setContentText("No data has been loaded. Please load data to continue.");
+            noDataLoadedAlert.showAndWait();
         }
     }
 }

@@ -28,8 +28,9 @@ public class NearestNeighbor implements TSPAlgorithms {
 
         ArrayList<Point> remainingPoints = points;
         remainingPoints.remove(0);
-        double totalDistance = calculateDistanceToClosestPosition(startPoint, remainingPoints);
         path.add(startPoint);
+        double totalDistance = calculateDistanceToClosestPosition(startPoint, remainingPoints);
+
         return totalDistance;
     }
 

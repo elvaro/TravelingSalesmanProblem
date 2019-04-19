@@ -1,7 +1,9 @@
 package elvaro;
 
-import elvaro.algorithms.NearestNeighbor;
+import elvaro.algorithms.greedy.Greedy;
+import elvaro.algorithms.nearest.neighbor.NearestNeighbor;
 import elvaro.algorithms.TSPAlgorithms;
+import elvaro.data.structures.Point;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
@@ -36,7 +38,8 @@ public class FXMLController {
     public void initialize() {
         //initialize all the algorithms and populate the dropdownmenu with them
         NearestNeighbor nn = new NearestNeighbor();
-        algorithm.getItems().addAll(nn);
+        Greedy greedy = new Greedy();
+        algorithm.getItems().addAll(nn, greedy);
     }
 
     @FXML

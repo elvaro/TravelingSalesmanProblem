@@ -1,6 +1,6 @@
 package elvaro.algorithms;
 
-import elvaro.Point;
+import elvaro.data.structures.Point;
 
 import java.util.ArrayList;
 

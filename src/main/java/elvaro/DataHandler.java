@@ -1,6 +1,7 @@
 package elvaro;
 
 import elvaro.algorithms.TSPAlgorithms;
+import elvaro.data.structures.Point;
 
 import java.util.ArrayList;
 

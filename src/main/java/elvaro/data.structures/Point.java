@@ -1,4 +1,4 @@
-package elvaro;
+package elvaro.data.structures;
 
 /**
  * This class represents a single point within the 2D plane

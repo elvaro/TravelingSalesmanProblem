@@ -1,6 +1,7 @@
 package elvaro.algorithms;
 
-import elvaro.Point;
+import elvaro.data.structures.Point;
+import elvaro.algorithms.nearest.neighbor.NearestNeighbor;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,6 +1,7 @@
-package elvaro.algorithms;
+package elvaro.algorithms.nearest.neighbor;
 
-import elvaro.Point;
+import elvaro.data.structures.Point;
+import elvaro.algorithms.TSPAlgorithms;
 
 import java.util.ArrayList;
 

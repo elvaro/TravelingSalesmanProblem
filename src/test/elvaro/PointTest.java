@@ -4,7 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PointTest {
 
@@ -27,7 +27,7 @@ class PointTest {
         assertEquals(141.421, Double.parseDouble(String.format("%.3f", distance).replaceAll(",", ".")));
 
         //test whether the distance is correct from the 0,0 coordinate
-        Point zero = new Point(0,0);
+        Point zero = new Point(0, 0);
         double distanceFromZero = zero.calculateDistanceToPoint(a);
         assertEquals(141.421, Double.parseDouble(String.format("%.3f", distanceFromZero).replaceAll(",", ".")));
 

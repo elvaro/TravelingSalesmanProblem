@@ -68,13 +68,4 @@ class NearestNeighborTest {
         assertEquals(b, path.get(3));
         assertEquals(e, path.get(4));
     }
-
-
-    @Test
-    void toString1() {
-    }
-
-    @Test
-    void getPath() {
-    }
 }

@@ -46,6 +46,7 @@
             <Label text="TSP Algorithm: "/>
             <ComboBox fx:id="algorithm" layoutX="15.0" layoutY="33.0" prefWidth="150.0" promptText="Choose"/>
             <Button text="Calculate" onAction="#calculate"/>
+            <Label fx:id="cost" visible="false"/>
         </HBox>
     </bottom>
 </BorderPane>

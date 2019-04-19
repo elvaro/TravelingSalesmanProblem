@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.stage.FileChooser;
 
 import java.io.*;
@@ -25,12 +26,12 @@ public class FXMLController {
     @FXML
     private ComboBox<TSPAlgorithms> algorithm;
 
+    @FXML
+    private Label cost;
+
     private ArrayList<Point> points;
 
     private double totalDistance = 0;
-
-    private ArrayList<Point> path = new ArrayList<>();
-
 
     public void initialize() {
         //initialize all the algorithms and populate the dropdownmenu with them
@@ -50,7 +51,6 @@ public class FXMLController {
         alert.setHeaderText("Information about this program");
         alert.setContentText("This program was written by Elvar Thor Olafsson. \n This project can be found on Github: https://github.com/elvaro/TravelingSalesmanProblem" +
                 "");
-
         alert.showAndWait();
     }
 
@@ -94,8 +94,6 @@ public class FXMLController {
             errorReadingFileAlert.setContentText("The following error occurred: " + ex);
             errorReadingFileAlert.showAndWait();
         }
-
-
         drawPoints();
     }
 
@@ -103,6 +101,7 @@ public class FXMLController {
      * Draws the points on the pane. Adds tooltip to each of them
      */
     private void drawPoints() {
+        centerPane.getChildren().clear();
         addDataMessage.setVisible(false);
         for (Point point : points) {
             Circle circle = new Circle(point.x, point.y, 5);
@@ -114,20 +113,46 @@ public class FXMLController {
 
     @FXML
     private void calculate() {
-        if (algorithm.getSelectionModel().getSelectedItem() == null) {
+        TSPAlgorithms algo = algorithm.getSelectionModel().getSelectedItem();
+        if (algo == null) {
             Alert noDataLoadedAlert = new Alert((Alert.AlertType.WARNING));
             noDataLoadedAlert.setTitle("No algorithm selected!");
             noDataLoadedAlert.setContentText("No algorithm selected. Please select an algorithm to continue.");
             noDataLoadedAlert.showAndWait();
         } else if (points != null && points.size() > 0) {
             DataHandler dataHandler = DataHandler.getDataHandler();
-            totalDistance = dataHandler.submitDataAndProcess(points, algorithm.getSelectionModel().getSelectedItem());
-
+            totalDistance = dataHandler.submitDataAndProcess(points, algo);
+            drawPath(algo.getPath());
+            cost.setText("Calculated cost: " + totalDistance);
+            cost.setVisible(true);
         } else {
             Alert noDataLoadedAlert = new Alert((Alert.AlertType.WARNING));
             noDataLoadedAlert.setTitle("No data loaded!");
             noDataLoadedAlert.setContentText("No data has been loaded. Please load data to continue.");
             noDataLoadedAlert.showAndWait();
+        }
+    }
+
+    /**
+     * Draw the calculated path in the GUI. Each point will be drawn along with a line to the next
+     * point in the path
+     *
+     * @param path An ArrayList of Point objects, indicating the path
+     */
+    private void drawPath(ArrayList<Point> path) {
+        centerPane.getChildren().clear();
+        Point previousPoint = null;
+
+        for (Point point : path) {
+            Circle circle = new Circle(point.x, point.y, 5);
+            Tooltip tooltip = new Tooltip("X: " + point.x + ", Y: " + point.y);
+            Tooltip.install(circle, tooltip);
+            Line line = new Line();
+            if (previousPoint != null) {
+                line = new Line(previousPoint.x, previousPoint.y, point.x, point.y);
+            }
+            centerPane.getChildren().addAll(circle, line);
+            previousPoint = point;
         }
     }
 }

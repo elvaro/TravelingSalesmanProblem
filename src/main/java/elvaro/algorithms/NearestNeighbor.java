@@ -9,7 +9,6 @@ import java.util.ArrayList;
  * have been visited. This algorithm gives a fast approximate solution but almost never the optimal solution.
  */
 public class NearestNeighbor implements TSPAlgorithms {
-    private ArrayList<Point> points;
     private ArrayList<Point> path = new ArrayList<>();
 
     /**
@@ -18,11 +17,8 @@ public class NearestNeighbor implements TSPAlgorithms {
     public NearestNeighbor() {
     }
 
-
     @Override
     public double calculate(ArrayList<Point> points) {
-        this.points = points;
-
         Point startPoint = points.get(0);
         startPoint.visited = true;
 

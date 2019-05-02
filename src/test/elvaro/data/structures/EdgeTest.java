@@ -4,6 +4,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class EdgeTest {
@@ -31,6 +35,8 @@ class EdgeTest {
     Edge DF;
     Edge EF;
 
+    ArrayList<Edge> edges = new ArrayList<>();
+
     @BeforeEach
     void setUp() {
         pointA = new Point(10,10);
@@ -55,6 +61,8 @@ class EdgeTest {
         CD = new Edge(pointC, pointD);
         CE = new Edge(pointC, pointE);
         DF = new Edge(pointD, pointF);
+
+        edges.addAll(Arrays.asList(AB, AD, BD, DE, EF, BC, CF, AC, AE, AF, BF, BE, CD, CE, DF));
     }
 
     @AfterEach
@@ -69,7 +77,14 @@ class EdgeTest {
 
     @Test
     void testSorting() {
-
+        Edge firstEdge = edges.get(0);
+        Edge lastEdge = edges.get(14);
+        assertEquals(AB, firstEdge);
+        assertEquals(DF, lastEdge);
+        Collections.sort(edges);
+        firstEdge = edges.get(0);
+        lastEdge = edges.get(14);
+        assertEquals(AB, firstEdge);
+        assertEquals(AF, lastEdge);
     }
-
 }

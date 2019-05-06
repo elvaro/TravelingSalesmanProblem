@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class EdgeTest {
 
@@ -39,12 +39,12 @@ class EdgeTest {
 
     @BeforeEach
     void setUp() {
-        pointA = new Point(10,10);
-        pointB = new Point(30,30);
-        pointC = new Point(200,20);
-        pointD = new Point(20,200);
-        pointE = new Point(100,100);
-        pointF = new Point(200,200);
+        pointA = new Point(10, 10);
+        pointB = new Point(30, 30);
+        pointC = new Point(200, 20);
+        pointD = new Point(20, 200);
+        pointE = new Point(100, 100);
+        pointF = new Point(200, 200);
 
         AB = new Edge(pointA, pointB);
         AD = new Edge(pointA, pointD);
@@ -86,5 +86,26 @@ class EdgeTest {
         lastEdge = edges.get(14);
         assertEquals(AB, firstEdge);
         assertEquals(AF, lastEdge);
+    }
+
+    @Test
+    void testEquals() {
+        Point a = new Point(10, 10);
+        Point b = new Point(20, 20);
+        Point c = new Point(30, 30);
+
+        Edge AB = new Edge(a,b);
+        Edge BA = new Edge(b,a);
+        Edge AC = new Edge(a,c);
+        Edge ABExtra = new Edge(a,b);
+
+        //check whether the Edge is the same no matter which direction it goes
+        assertEquals(true, AB.equals(BA));
+        //check whether the same Edge object returns true if compared against it self
+        assertEquals(true, BA.equals(BA));
+        //check whether the equals method returns false when comparing two different edges
+        assertEquals(false, AB.equals(AC));
+        //check whether two different edges with same end points return true
+        assertEquals(true, AB.equals(ABExtra));
     }
 }

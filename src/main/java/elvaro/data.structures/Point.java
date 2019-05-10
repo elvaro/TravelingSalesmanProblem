@@ -1,5 +1,7 @@
 package elvaro.data.structures;
 
+import java.util.ArrayList;
+
 /**
  * This class represents a single point within the 2D plane
  */
@@ -7,10 +9,19 @@ public class Point {
     public final double x;
     public final double y;
     public boolean visited = false;
+    private ArrayList<Edge> containedInEdges = new ArrayList<>();
 
     public Point(double x, double y) {
         this.x = x;
         this.y = y;
+    }
+
+    public void addToEdge(Edge edge) {
+        containedInEdges.add(edge);
+    }
+
+    public ArrayList<Edge> getContainedInEdges() {
+        return containedInEdges;
     }
 
     /**

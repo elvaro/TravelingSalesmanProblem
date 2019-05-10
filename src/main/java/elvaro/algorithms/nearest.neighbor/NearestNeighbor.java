@@ -19,7 +19,7 @@ public class NearestNeighbor implements TSPAlgorithms {
     }
 
     @Override
-    public double calculate(ArrayList<Point> points) {
+    public double calculateDistance(ArrayList<Point> points) {
         Point startPoint = points.get(0);
         startPoint.visited = true;
 

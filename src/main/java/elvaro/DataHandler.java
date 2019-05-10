@@ -24,6 +24,6 @@ public class DataHandler {
     }
 
     public double submitDataAndProcess(ArrayList<Point> points, TSPAlgorithms algorithm) {
-        return algorithm.calculate(points);
+        return algorithm.calculateDistance(points);
     }
 }

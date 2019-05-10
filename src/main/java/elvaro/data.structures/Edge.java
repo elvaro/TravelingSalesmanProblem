@@ -15,6 +15,8 @@ public class Edge implements Comparable {
         this.pointA = a;
         this.pointB = b;
         this.length = a.calculateDistanceToPoint(b);
+        a.addToEdge(this);
+        b.addToEdge(this);
     }
 
 

@@ -10,7 +10,7 @@ public interface TSPAlgorithms {
      *
      * @param points An ArrayList of Points
      */
-    double calculate(ArrayList<Point> points);
+    double calculateDistance(ArrayList<Point> points);
 
     /**
      * A string representation of the object

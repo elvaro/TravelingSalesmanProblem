@@ -26,30 +26,30 @@ class NearestNeighborTest {
 
     @Test
     void calculateDistanceBetween2Points() {
-        //create two points and calculate the distance between them
+        //create two points and calculateDistance the distance between them
         Point a = new Point(10, 10);
         Point b = new Point(100, 100);
         ArrayList<Point> points = new ArrayList<>();
         Collections.addAll(points, a, b);
-        double totalDistance = algorithm.calculate(points);
+        double totalDistance = algorithm.calculateDistance(points);
         assertEquals(127.279, Double.parseDouble(String.format("%.3f", totalDistance).replaceAll(",", ".")));
     }
 
     @Test
     void calculateDistanceBetween3Points() {
-        //create three points and calculate the distance between them
+        //create three points and calculateDistance the distance between them
         Point a = new Point(10, 10);
         Point b = new Point(100, 100);
         Point c = new Point(200, 300);
         ArrayList<Point> points = new ArrayList<>();
         Collections.addAll(points, a, b, c);
-        double totalDistance = algorithm.calculate(points);
+        double totalDistance = algorithm.calculateDistance(points);
         assertEquals(350.886, Double.parseDouble(String.format("%.3f", totalDistance).replaceAll(",", ".")));
     }
 
     @Test
     void calculateDistanceBetween5Points() {
-        //create five points and calculate the distance between them
+        //create five points and calculateDistance the distance between them
         Point a = new Point(10, 10);
         Point b = new Point(10, 250);
         Point c = new Point(40, 100);
@@ -58,7 +58,7 @@ class NearestNeighborTest {
         ArrayList<Point> points = new ArrayList<>();
         Collections.addAll(points, a, b, c, d, e);
 
-        double totalDistance = algorithm.calculate(points);
+        double totalDistance = algorithm.calculateDistance(points);
         assertEquals(441.137, Double.parseDouble(String.format("%.3f", totalDistance).replaceAll(",", ".")));
 
         //verify the path. The path taken should be A -> D -> C -> B -> E

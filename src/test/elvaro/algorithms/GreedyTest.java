@@ -51,7 +51,7 @@ class GreedyTest {
     @Test
     void createEdges() {
         Collections.addAll(points, pointA, pointB, pointC);
-        greedy.calculate(points);
+        greedy.calculateDistance(points);
 
         ArrayList<Edge> edges = greedy.getEdges();
 
